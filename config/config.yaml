@@ -1,0 +1,35 @@
+# Optional override for where to keep all state files (defaults to XDG_DATA_HOME/omnicalendar/state)
+#state_dir: "/custom/path/omnicalendar/state"
+
+accounts:
+  - type: caldav
+    name: nextcloud
+    url: "<URL>"
+    username: "<USER>"
+    password_cmd: "<Command to get password. I use pass"
+    # password: # can use this for plaintext password
+
+  #- type: google
+  #  name: work-google
+  #  credentials_path: "~/.config/google/credentials.json"
+  #  token_path:       "~/.local/share/google/token.json"
+
+sync:
+  mappings:
+    # Full, two‐way sync between exactly these two calendars in the same account:
+    - source:
+        account: nextcloud
+        calendar: "Test_A"
+      target:
+        account: nextcloud
+        calendar: "Test_B"
+      mode: full
+
+    # Full, two‐way sync across different backends:
+    - source:
+        account: nextcloud
+        calendar: "Test_C"
+      target:
+        account: nextcloud
+        calendar: "Test_D"
+      mode: busy
